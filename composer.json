@@ -1,0 +1,23 @@
+{
+    "name": "medboubazine/chargily-checkout",
+    "type": "library",
+    "description": "Make integration with epay.chargily easy for php",
+    "keywords": ["php","chargily","epay","epay.chargily.com"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Boubazine mohammed",
+            "email": "mohamedtorino161@gmail.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+    		"php": ">=7.2.0",
+        "guzzlehttp/guzzle": "^7.0"
+  	},
+    "autoload": {
+      "psr-4": {
+        "Medboubazine\\Chargily\\": "src/"
+      }
+    }
+}
