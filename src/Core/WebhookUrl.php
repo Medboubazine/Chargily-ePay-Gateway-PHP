@@ -73,7 +73,7 @@ class WebhookUrl{
             return $this->getHeaders()['Signature'];
         }
         return null;
-    }     
+    }
     /**
      * getContent
      *
@@ -88,7 +88,7 @@ class WebhookUrl{
      * @return array
      */
     protected function getContentToArray(){
-        return json_decode(json_encode($this->getContent()),true) ?? [];
+        return json_decode($this->getContent(),true) ?? [];
     }
     /**
      * getHeaders
