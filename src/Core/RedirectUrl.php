@@ -1,16 +1,18 @@
 <?php
+
 namespace Medboubazine\Chargily\Core;
 
 use GuzzleHttp\Client;
 use Medboubazine\Chargily\Exceptions\InvalidResponseException;
 
-class RedirectUrl{    
+class RedirectUrl
+{
     /**
      * create payment api url
      *
      * @var string
      */
-    protected string $api_url = 'http://epay.chargily.com.dz/api/invoice';    
+    protected string $api_url = 'http://epay.chargily.com.dz/api/invoice';
     /**
      * method
      *
@@ -22,14 +24,14 @@ class RedirectUrl{
      *
      * @var Configurationxed
      */
-    protected Configurations $configurations;    
+    protected Configurations $configurations;
     /**
      * cachedResponse
      *
      * @var object
      */
     protected $cachedResponse = null;
-    
+
     /**
      * __construct
      *
@@ -40,7 +42,7 @@ class RedirectUrl{
     {
         $this->configurations = $configurations;
     }
-        
+
     /**
      * send
      *
@@ -54,7 +56,7 @@ class RedirectUrl{
         //get response content
         $content = $response->getBody()->getContents();
         //convert json to php array
-        $content_to_array = json_decode($content,true);
+        $content_to_array = json_decode($content, true);
         //
         return $content_to_array['checkout_url'];
     }
@@ -65,19 +67,20 @@ class RedirectUrl{
      */
     protected function getResponse()
     {
-        return $this->cachedResponse = ($this->cachedResponse) ? $this->cachedResponse : ( new Client())->request($this->method,$this->api_url,$this->buildRequest());
-    }    
+        return $this->cachedResponse = ($this->cachedResponse) ? $this->cachedResponse : (new Client())->request($this->method, $this->api_url, $this->buildRequest());
+    }
     /**
      * validateResponse
      *
      * @return void
      */
-    protected function validateResponse(){
+    protected function validateResponse()
+    {
 
         $response = $this->getResponse();
 
-        if (!in_array($response->getStatusCode(),['201'])) {
-            throw new InvalidResponseException("Invalid response status code ({$response->getStatusCode()}) when trying to get redirect url . More info (".$response->getBody()->getContents().')');
+        if (!in_array($response->getStatusCode(), ['201'])) {
+            throw new InvalidResponseException("Invalid response status code ({$response->getStatusCode()}) when trying to get redirect url . More info (" . $response->getBody()->getContents() . ')');
         }
     }
     /**
@@ -85,15 +88,17 @@ class RedirectUrl{
      *
      * @return array
      */
-    protected function buildRequest(){
-        $headers = array_merge(['Accept'=>'application/json','X-Authorization'=>$this->configurations->getApikey()],$this->configurations->getOptionsHeaders());
+    protected function buildRequest()
+    {
+        $headers = array_merge(['Accept' => 'application/json', 'X-Authorization' => $this->configurations->getApikey()], $this->configurations->getOptionsHeaders());
         return [
-            'allow_redirects'=>false,
-            'http_errors'=>false,
-            'timeout'=>$this->configurations->getOptionsTimeout(),
-            'headers'=>$headers,
+            'allow_redirects' => false,
+            'http_errors' => false,
+            'timeout' => $this->configurations->getOptionsTimeout(),
+            'headers' => $headers,
             'form_params' => [
                 'client' => $this->configurations->getPaymentClientName(),
+                'client_email' => $this->configurations->getPaymentClientEmail(),
                 'invoice_number' => $this->configurations->getPaymentNumber(),
                 'amount' => $this->configurations->getPaymentAmount(),
                 'discount' => $this->configurations->getPaymentDiscount(),

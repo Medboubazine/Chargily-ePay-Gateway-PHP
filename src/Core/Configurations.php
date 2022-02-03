@@ -1,11 +1,12 @@
 <?php
+
 namespace Medboubazine\Chargily\Core;
 
-use Medboubazine\Chargily\Validator\ConfigurationsValidator;
 use Medboubazine\Chargily\Validators\RedirectUrlConfigurationsValidator;
 use Medboubazine\Chargily\Validators\WebhookUrlConfigurationsValidator;
 
-class Configurations{    
+class Configurations
+{
     /**
      * configurations
      *
@@ -21,7 +22,7 @@ class Configurations{
     public function __construct(array $array)
     {
         $this->configurations = $array;
-    }    
+    }
     /**
      * getApikey
      *
@@ -30,7 +31,7 @@ class Configurations{
     public function getApikey()
     {
         return $this->configurations["api_key"];
-    }    
+    }
     /**
      * getApiSecret
      *
@@ -39,7 +40,7 @@ class Configurations{
     public function getApiSecret()
     {
         return $this->configurations["api_secret"];
-    }    
+    }
     /**
      * getUrls
      *
@@ -48,7 +49,7 @@ class Configurations{
     public function getUrls()
     {
         return $this->configurations["urls"]  ?? [];
-    }    
+    }
     /**
      * getBackUrl
      *
@@ -57,7 +58,7 @@ class Configurations{
     public function getBackUrl()
     {
         return $this->configurations["urls"]['back_url']  ?? null;
-    }    
+    }
     /**
      * geWebhookUrl
      *
@@ -66,7 +67,7 @@ class Configurations{
     public function getWebhookUrl()
     {
         return $this->configurations["urls"]['webhook_url']  ?? null;
-    }    
+    }
     /**
      * getMode
      *
@@ -75,7 +76,7 @@ class Configurations{
     public function getMode()
     {
         return $this->configurations["mode"]  ?? null;
-    }    
+    }
     /**
      * getPaymentDetails
      *
@@ -84,7 +85,7 @@ class Configurations{
     public function getPaymentDetails()
     {
         return $this->configurations["payment"]  ?? [];
-    }    
+    }
     /**
      * getPaymentNumber
      *
@@ -93,7 +94,7 @@ class Configurations{
     public function getPaymentNumber()
     {
         return $this->configurations["payment"]["number"]  ?? null;
-    }    
+    }
     /**
      * getPaymentClientName
      *
@@ -102,7 +103,16 @@ class Configurations{
     public function getPaymentClientName()
     {
         return $this->configurations["payment"]["client_name"]  ?? null;
-    }    
+    }
+    /**
+     * getPaymentClientEmail
+     *
+     * @return string
+     */
+    public function getPaymentClientEmail()
+    {
+        return $this->configurations["payment"]["client_email"]  ?? null;
+    }
     /**
      * getPaymentAmount
      *
@@ -111,7 +121,7 @@ class Configurations{
     public function getPaymentAmount()
     {
         return $this->configurations["payment"]["amount"]  ?? null;
-    }    
+    }
     /**
      * getPaymentDiscount
      *
@@ -120,7 +130,7 @@ class Configurations{
     public function getPaymentDiscount()
     {
         return $this->configurations["payment"]["discount"]  ?? null;
-    }    
+    }
     /**
      * getPaymentDescription
      *
@@ -129,7 +139,7 @@ class Configurations{
     public function getPaymentDescription()
     {
         return $this->configurations["payment"]["description"] ?? null;
-    }    
+    }
     /**
      * getOptions
      *
@@ -138,7 +148,7 @@ class Configurations{
     public function getOptions()
     {
         return $this->configurations["options"] ?? [];
-    }    
+    }
     /**
      * getOptionsHeaders
      *
@@ -147,7 +157,7 @@ class Configurations{
     public function getOptionsHeaders()
     {
         return $this->configurations["options"]['headers'] ?? [];
-    }    
+    }
     /**
      * getOptions
      *
@@ -165,7 +175,7 @@ class Configurations{
      */
     public function validateWebhookConfigurations()
     {
-       return (new WebhookUrlConfigurationsValidator($this->configurations,true))->validate();
+        return (new WebhookUrlConfigurationsValidator($this->configurations, true))->validate();
     }
     /**
      * validateAndGetConfigurations
@@ -175,6 +185,6 @@ class Configurations{
      */
     public function validateRedirectConfigurations()
     {
-       return (new RedirectUrlConfigurationsValidator($this->configurations,true))->validate();
+        return (new RedirectUrlConfigurationsValidator($this->configurations, true))->validate();
     }
 }

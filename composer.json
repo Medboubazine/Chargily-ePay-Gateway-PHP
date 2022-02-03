@@ -1,8 +1,8 @@
 {
     "name": "medboubazine/chargily-checkout",
     "type": "library",
-    "description": "Make integration with epay.chargily easy for php",
-    "keywords": ["php","chargily","epay","epay.chargily.com"],
+    "description": "Chargily ePay Gateway - PHP",
+    "keywords": ["php","chargily","epay","epay.chargily.com.dz","epaiment","Chargily-ePay-Gateway"],
     "license": "MIT",
     "authors": [
         {

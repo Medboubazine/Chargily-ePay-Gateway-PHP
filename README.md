@@ -1,5 +1,5 @@
-# Chargily chechkout php
-Make your integration via chargily epay easier
+# Chargily ePay Gateway PHP
+Make your integration via Chargily ePay Gateway easier
 - **This is not an official release from Chargily**
 - **This library is my own development**
 - Chargily epay home page [Click here](https://epay.chargily.com.dz)
@@ -20,22 +20,23 @@ require './vendor/autoload.php';
 
 $chargily = new Chargily(new Configurations([
                         //crenditionals
-                        'api_key'=>'your-api-key',
-                        'api_secret'=>'your-api-secret',
+                        'api_key'=>'your-api-key',// you can you found it on your epay.chargily.com.dz Dashboard
+                        'api_secret'=>'your-api-secret',// you can you found it on your epay.chargily.com.dz Dashboard
                         //urls
                         'urls'=>[
-                            'back_url'=>"valid-url-to-redirect-after-payment",
-                            'webhook_url'=>"valid-url-to-process-after-payment-sucess",
+                            'back_url'=>"valid-url-to-redirect-after-payment",// this is where client redirected after payment processing
+                            'webhook_url'=>"valid-url-to-process-after-payment-sucess",// this is where you recieve payment informations
                         ],
                         //mode
                         'mode'=>'EDAHABIA',//OR CIB
                         //payment details
                         'payment'=>[
-                            'number'=>'payment-number-from-your-side',
-                            'client_name'=>'client name',
-                            'amount'=>100,//must be greater than 100 for EDAhabia and 200 For cib
-                            'discount'=>0,//percentage between 0 and 99.99
-                            'description'=>'payment-description',
+                            'number'=>'payment-number-from-your-side',// Payment or order number
+                            'client_name'=>'client name',// Client name
+                            'client_name'=>'client_email@mail.com',// This is where client receive payment receipt after confirmation
+                            'amount'=>75,//this the amount must be greater than or equal 75 
+                            'discount'=>0,//this is discount percentage between 0 and 99.99
+                            'description'=>'payment-description',// this is the payment description
                             
                         ],
                         //options
@@ -105,22 +106,23 @@ exit;
 
 - Avaiialable Configurations
 
-| key                   |  description                                                                          | redirect url |  process url |
-|-----------------------|---------------------------------------------------------------------------------------|--------------|--------------|
-| api_key               | must be string given by organization                                                  |   required   |   required   |
-| api_secret            | must be string given by organization                                                  |   required   |   required   |
-| urls                  | must be array                                                                         |   required   | not required |
-| urls[back_url]        | must be string and valid url                                                          |   required   | not required |
-| urls[process_url]     | must be string and valid url                                                          |   required   | not required |
-| mode                  | must be in **CIB**,**EDAHABIA**                                                       |   required   | not required |
-| payment[number]       | must be string or int                                                                 |   required   | not required |
-| payment[client_name]  | must be string                                                                        |   required   | not required |
-| payment[amount]       | must be numeric and greather than 100 if mode **EDAHABIA** and 200 if mode **CIB**    |   required   | not required |
-| payment[discount]     | must be numeric and between 0 and 99.99  (discount by percentage)                     |   required   | not required |
-| payment[description]  | must be string                                                                        |   required   | not required |
-| options               | must be array                                                                         |   required   | not required |
-| payment[headers]      | must be array                                                                         |   required   | not required |
-| payment[timeout]      | must be numeric                                                                       |   required   | not required |
+| key                   |  description                                                                                          | redirect url |  process url |
+|-----------------------|-------------------------------------------------------------------------------------------------------|--------------|--------------|
+| api_key               | must be string given by organization                                                                  |   required   |   required   |
+| api_secret            | must be string given by organization                                                                  |   required   |   required   |
+| urls                  | must be array                                                                                         |   required   | not required |
+| urls[back_url]        | must be string and valid url                                                                          |   required   | not required |
+| urls[process_url]     | must be string and valid url                                                                          |   required   | not required |
+| mode                  | must be in **CIB**,**EDAHABIA**                                                                       |   required   | not required |
+| payment[number]       | must be string or int                                                                                 |   required   | not required |
+| payment[client_name]  | must be string                                                                                        |   required   | not required |
+| payment[client_email] | must be string and valid email This is where client receive payment receipt after confirmation        |   required   | not required |
+| payment[amount]       | must be numeric and greather or equal than  75                                                        |   required   | not required |
+| payment[discount]     | must be numeric and between 0 and 99.99  (discount by percentage)                                     |   required   | not required |
+| payment[description]  | must be string                                                                                        |   required   | not required |
+| options               | must be array                                                                                         |   required   | not required |
+| options[headers]      | must be array                                                                                         |   required   | not required |
+| options[timeout]      | must be numeric                                                                                       |   required   | not required |
 
 # Donations
 
