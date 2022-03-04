@@ -1,13 +1,13 @@
 # Chargily ePay Gateway PHP
 Make your integration via Chargily ePay Gateway easier
-- **This is not an official release from Chargily**
-- **This library is my own development**
 - Chargily epay home page [Click here](https://epay.chargily.com.dz)
 # Instalation
-Via Composer
+1. Via Composer (Recomended)
 ```bash
 composer require medboubazine/chargily-checkout
 ```
+2. Download as ZIP
+We do not recommend this option. But be careful to download the updated versions every a while [Download](https://github.com/Medboubazine/Chargily-ePay-Gateway-PHP/releases/)
 # Quick start
 
 1. create redirect php file **redirect.php**
@@ -51,7 +51,7 @@ $redirectUrl = $chargily->getRedirectUrl();
 //
 if($redirectUrl){
     //redirect
-    header('Location: '.$redirectUrl)
+    header('Location: '.$redirectUrl);
 }else{
     echo "We cant redirect to your payment now";
 }
@@ -79,8 +79,8 @@ if ($chargily->checkResponse()) {
         Response like the follwing array
             "invoice"=>[
                 "id" => 41441,
-                "client" => "Mohammed boubazine",
-                "invoice_number" => "615bec60047d0",
+                "client" => "Client name",
+                "invoice_number" => "100020",
                 "due_date" => "2021-10-05 00:00:00",
                 "status" => "paid",
                 "amount" => 100,
@@ -102,9 +102,9 @@ if ($chargily->checkResponse()) {
 exit;
 ```
 
-# Notice
+# Configurations
 
-- Avaiialable Configurations
+- Avaialable Configurations
 
 | key                   |  description                                                                                          | redirect url |  process url |
 |-----------------------|-------------------------------------------------------------------------------------------------------|--------------|--------------|
@@ -124,11 +124,7 @@ exit;
 | options[headers]      | must be array                                                                                         |   required   | not required |
 | options[timeout]      | must be numeric                                                                                       |   required   | not required |
 
-# Donations
 
-You can support me to continue developing the library
-
-- Baridimob RIP : **00799999002680137269**
-- Paysera : **mohamedtorino161@gmail.com**
-
-Good luck with the integration
+# Notice
+- Good luck with the integration
+- Open an issues if you faced a problem [Click here](https://github.com/Medboubazine/Chargily-ePay-Gateway-PHP/issues/new)
