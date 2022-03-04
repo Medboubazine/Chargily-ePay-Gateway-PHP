@@ -124,14 +124,6 @@ exit;
 | options[headers]      | must be array                                                                                         |   required   | not required |
 | options[timeout]      | must be numeric                                                                                       |   required   | not required |
 
-
-<<<<<<< HEAD
 # Notice
 - Good luck with the integration
 - Open an issues if you faced a problem [Click here](https://github.com/Medboubazine/Chargily-ePay-Gateway-PHP/issues/new)
-=======
-- Baridimob RIP : **00799999002680137269**
-- Paysera : **mohamedtorino161@gmail.com**
-
-Good luck with the integration
->>>>>>> 83e80e661b345dc7c6e1454aead671df5979a248
