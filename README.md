@@ -33,7 +33,7 @@ $chargily = new Chargily(new Configurations([
                         'payment'=>[
                             'number'=>'payment-number-from-your-side',// Payment or order number
                             'client_name'=>'client name',// Client name
-                            'client_name'=>'client_email@mail.com',// This is where client receive payment receipt after confirmation
+                            'client_email'=>'client_email@mail.com',// This is where client receive payment receipt after confirmation
                             'amount'=>75,//this the amount must be greater than or equal 75 
                             'discount'=>0,//this is discount percentage between 0 and 99.99
                             'description'=>'payment-description',// this is the payment description
@@ -125,6 +125,13 @@ exit;
 | options[timeout]      | must be numeric                                                                                       |   required   | not required |
 
 
+<<<<<<< HEAD
 # Notice
 - Good luck with the integration
 - Open an issues if you faced a problem [Click here](https://github.com/Medboubazine/Chargily-ePay-Gateway-PHP/issues/new)
+=======
+- Baridimob RIP : **00799999002680137269**
+- Paysera : **mohamedtorino161@gmail.com**
+
+Good luck with the integration
+>>>>>>> 83e80e661b345dc7c6e1454aead671df5979a248
