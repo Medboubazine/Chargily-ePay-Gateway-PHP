@@ -1,4 +1,5 @@
 <?php
+
 /**
  * 
  * Please do not edit/delete this file
@@ -16,5 +17,5 @@ $paths = [
 ];
 
 foreach ($paths as $path) {
-    require __DIR__.$path;
+    require __DIR__ . $path;
 }
