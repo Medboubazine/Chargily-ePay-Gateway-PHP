@@ -9,8 +9,7 @@ Chargily ePay Gateway API
 - Request method ```POST``` url ```http://epay.chargily.com.dz/api/invoice```
 
 - Request Headers :
-        X-Authorization : API_KEY
-        Accept : application/json
+        ```X-Authorization : API_KEY``` , ```Accept : application/json```
 
 - Request Parameters
 
@@ -27,12 +26,19 @@ Chargily ePay Gateway API
 | comment               | Description for the payment raison                                                                    |   required ; string                       |
 
 - Responses
+
     -   201 : payment created successffully
+
             Response as 'json' : 'checkout_url'
+
             Example: {"checkout_url"=>"https://epay.chargily.com.dz/checkout/random_token_here"}
+
     -   401 : Unauthorized
+
             Invalid API_KEY
+
     -   422 : invalid parametters
+
             The request was well-formed but was unable to be followed due to semantic errors
 
 > if the creation of invoice successed make redirection to checkout_url
