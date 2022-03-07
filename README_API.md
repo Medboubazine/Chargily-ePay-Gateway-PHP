@@ -11,7 +11,7 @@ Chargily ePay Gateway API
 - Request Headers :
         ```X-Authorization : API_KEY``` , ```Accept : application/json```
 
-- Request Parameters
+- Request Parameters :
 
 | name                          |  description                                                                                          | Validation                                |
 |-------------------------------|-------------------------------------------------------------------------------------------------------|-------------------------------------------|
@@ -25,7 +25,7 @@ Chargily ePay Gateway API
 |  ```mode ```                  | This is the payment method "EDAHABIA" or "CIB"                                                        |   required ; in:EDAHABIA / CIB            |
 |  ```comment ```               | Description for the payment raison                                                                    |   required ; string                       |
 
-- Responses
+- Responses :
 
     -   201 : payment created successffully
 
@@ -51,18 +51,18 @@ We will send you operation responce via already sent "webhook_url".
 
 - Headers :
 
-    Signature
+        Signature
 
 - Body :
 
-    invoice with payment status
+        invoice with payment status
 
 - Signature Validation :
 
-    Incoming webhook request has a header that can be used to verify the payload
-    The name of the header containing the signature can be configured in the 'Signature' header key to validate signatures
+        Incoming webhook request has a header that can be used to verify the payload
+        The name of the header containing the signature can be configured in the 'Signature' header key to validate signatures
 
-This is an example how you will compute the signature in PHP
+- This is an example how you will compute the signature in PHP
 
 ```php
     //Secret key can be found in your profile information
