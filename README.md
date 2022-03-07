@@ -1,7 +1,7 @@
 # Chargily ePay Gateway PHP
 Make your integration via Chargily ePay Gateway easier
 - Chargily epay home page [Click here](https://epay.chargily.com.dz)
-- If you are using another programing language [Please Click here](https://github.com/Medboubazine/Chargily-ePay-Gateway-PHP/issues/new)
+- **If you are using another programing language** [Please Click here](https://github.com/Medboubazine/Chargily-ePay-Gateway-PHP/blob/master/README_API.md)
 # Installation
 1. Via Composer (Recomended)
 ```bash
