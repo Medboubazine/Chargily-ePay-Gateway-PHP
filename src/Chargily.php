@@ -1,17 +1,19 @@
 <?php
+
 namespace Medboubazine\Chargily;
 
 use Medboubazine\Chargily\Core\Configurations;
 use Medboubazine\Chargily\Core\RedirectUrl;
 use Medboubazine\Chargily\Core\WebhookUrl;
 
-class Chargily{        
+class Chargily
+{
     /**
      * configurations
      *
      * @var Configurations
      */
-    protected Configurations $configurations;    
+    protected $configurations;
     /**
      * cachedUrl
      *
@@ -21,13 +23,19 @@ class Chargily{
     /**
      * __construct
      *
-     * @param  Configurations $configurations
+     * @param  array|Configurations $configurations
      * @return void
      */
-    public function __construct(Configurations $configurations)
+    public function __construct($configurations)
     {
-        $this->configurations = $configurations;
-    }    
+        if ($configurations instanceof Configurations) {
+            $this->configurations = $configurations;
+        } elseif (is_array($configurations)) {
+            $this->configurations = new Configurations($configurations);
+        } else {
+            throw new \Exception(static::class . "::__construct(\$configurations) . \$configurations argument must be instance of " . Configurations::class . " or an array", 1);
+        }
+    }
     /**
      * getRedirectUrl
      *
@@ -37,8 +45,8 @@ class Chargily{
     {
         $this->configurations->validateRedirectConfigurations();
         //
-        return $this->cachedRedirectUrl = ($this->cachedRedirectUrl) ? $this->cachedRedirectUrl : (new RedirectUrl($this->configurations))->getRedirectUrl() ;
-    }    
+        return $this->cachedRedirectUrl = ($this->cachedRedirectUrl) ? $this->cachedRedirectUrl : (new RedirectUrl($this->configurations))->getRedirectUrl();
+    }
     /**
      * checkResponse
      *
@@ -50,7 +58,7 @@ class Chargily{
         $this->configurations->validateWebhookConfigurations();
 
         return (new WebhookUrl($this->configurations))->check();
-    }    
+    }
     /**
      * getResponseDetails
      *
