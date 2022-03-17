@@ -19,7 +19,7 @@ use Medboubazine\Chargily\Core\Configurations;
 
 require './vendor/autoload.php';
 
-$chargily = new Chargily([
+$chargily = new Chargily(new Configurations([
     //crenditionals
     'api_key' => 'your-api-key', // you can you found it on your epay.chargily.com.dz Dashboard
     'api_secret' => 'your-api-secret', // you can you found it on your epay.chargily.com.dz Dashboard
@@ -45,7 +45,7 @@ $chargily = new Chargily([
         'headers' => [],
         'timeout' => 20,
     ],
-]);
+]));
 // get redirect url
 $redirectUrl = $chargily->getRedirectUrl();
 //like : https://epay.chargily.com.dz/checkout/random_token_here
