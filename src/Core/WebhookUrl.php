@@ -1,35 +1,37 @@
 <?php
+
 namespace Medboubazine\Chargily\Core;
 
 use GuzzleHttp\Client;
 use Medboubazine\Chargily\Exceptions\InvalidResponseException;
 
-class WebhookUrl{    
+class WebhookUrl
+{
     /**
      * method
      *
      * @var string
      */
-    protected string $method = 'POST';
+    protected $method = 'POST';
     /**
      * configurations
      *
-     * @var Configurationxed
+     * @var \Medboubazine\Chargily\Core\Configurations
      */
-    protected Configurations $configurations;    
+    protected $configurations;
     /**
      * cachedHeaders
      *
      * @var null|array
      */
-    protected $cachedHeaders = null;    
+    protected $cachedHeaders = null;
     /**
      * cachedContent
      *
      * @var null|string
      */
     protected $cachedContent = null;
-    
+
     /**
      * __construct
      *
@@ -39,7 +41,7 @@ class WebhookUrl{
     public function __construct(Configurations $configurations)
     {
         $this->configurations = $configurations;
-    }    
+    }
     /**
      * checkResponse
      *
@@ -47,29 +49,30 @@ class WebhookUrl{
      */
     public function check()
     {
-        $computedSignature = hash_hmac('sha256',$this->getContent(),$this->configurations->getApiSecret());
+        $computedSignature = hash_hmac('sha256', $this->getContent(), $this->configurations->getApiSecret());
 
-        return @hash_equals($computedSignature,$this->getSignature()) ?? false;
-
-    }    
+        return @hash_equals($computedSignature, $this->getSignature()) ?? false;
+    }
     /**
      * getInvoiceDetails
      *
      * @return array
      */
-    public function getResponseDetails(){
+    public function getResponseDetails()
+    {
         return $this->getContentToArray() ?? [];
     }
-    
+
     /**
      * getSignature
      *
      * @return null|string
      */
-    protected function getSignature(){
+    protected function getSignature()
+    {
         if (isset($this->getHeaders()['signature'])) {
             return $this->getHeaders()['signature'];
-        }elseif (isset($this->getHeaders()['Signature'])) {
+        } elseif (isset($this->getHeaders()['Signature'])) {
             return $this->getHeaders()['Signature'];
         }
         return null;
@@ -79,23 +82,26 @@ class WebhookUrl{
      *
      * @return null|string
      */
-    protected function getContent(){
+    protected function getContent()
+    {
         return $this->cachedContent = ($this->cachedContent) ? $this->cachedContent : file_get_contents("php://input");
-    }    
+    }
     /**
      * getContentToArray
      *
      * @return array
      */
-    protected function getContentToArray(){
-        return json_decode($this->getContent(),true) ?? [];
+    protected function getContentToArray()
+    {
+        return json_decode($this->getContent(), true) ?? [];
     }
     /**
      * getHeaders
      *
      * @return array
      */
-    protected function getHeaders(){
+    protected function getHeaders()
+    {
         return $this->cachedHeaders = ($this->cachedHeaders) ? $this->cachedHeaders : getallheaders();
     }
 }

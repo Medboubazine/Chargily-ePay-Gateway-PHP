@@ -11,20 +11,20 @@ class RedirectUrlConfigurationsValidator
      *
      * @var mixed
      */
-    protected array $configurations;
+    protected $configurations;
     /**
      * debug
      *
      * @var bool
      */
-    protected bool $debug;
+    protected $debug;
     /**
      * availlable_modes
      *
      * @var array
      */
-    protected array $availlable_modes = ["CIB", "EDAHABIA"];
-    protected array $availlable_urls = ["back_url", "webhook_url"];
+    protected $availlable_modes = ["CIB", "EDAHABIA"];
+    protected $availlable_urls = ["back_url", "webhook_url"];
     /**
      * __construct
      *

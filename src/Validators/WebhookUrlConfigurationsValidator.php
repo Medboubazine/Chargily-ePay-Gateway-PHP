@@ -11,24 +11,24 @@ class WebhookUrlConfigurationsValidator
      *
      * @var mixed
      */
-    protected array $configurations;    
+    protected $configurations;
     /**
      * debug
      *
      * @var bool
      */
-    protected bool $debug;
+    protected $debug;
     /**
      * __construct
      *
      * @param  array $configurations
      * @return void
      */
-    public function __construct(array $configurations,bool $debug = true)
+    public function __construct(array $configurations, bool $debug = true)
     {
         $this->configurations = $configurations;
         $this->debug = $debug;
-    }    
+    }
     /**
      * validate
      *
@@ -39,14 +39,14 @@ class WebhookUrlConfigurationsValidator
     {
         $array = $this->configurations;
         //
-        if (!isset($array['api_key']) OR !is_string($array['api_key'])) {
+        if (!isset($array['api_key']) or !is_string($array['api_key'])) {
             $this->throwException("configurations.api_key is required and must be string");
         }
-        if (!isset($array['api_secret']) OR !is_string($array['api_secret'])) {
+        if (!isset($array['api_secret']) or !is_string($array['api_secret'])) {
             $this->throwException("configurations.api_secret is required and must be string");
         }
         return $array;
-    }    
+    }
     /**
      * throwException
      *
@@ -54,11 +54,11 @@ class WebhookUrlConfigurationsValidator
      * @param  int $code
      * @return void
      */
-    protected function throwException(string $message,int $code = 0)
+    protected function throwException(string $message, int $code = 0)
     {
         if ($this->debug) {
-            throw new InvalidConfigurationsException($message,$code);
-        }else{
+            throw new InvalidConfigurationsException($message, $code);
+        } else {
             return http_response_code(500);
         }
     }

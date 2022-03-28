@@ -12,7 +12,7 @@ class Configurations
      *
      * @var array
      */
-    protected array $configurations = [];
+    protected $configurations = [];
     /**
      * __construct
      *

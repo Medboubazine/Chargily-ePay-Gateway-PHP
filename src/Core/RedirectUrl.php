@@ -12,19 +12,19 @@ class RedirectUrl
      *
      * @var string
      */
-    protected string $api_url = 'http://epay.chargily.com.dz/api/invoice';
+    protected $api_url = 'http://epay.chargily.com.dz/api/invoice';
     /**
      * method
      *
      * @var string
      */
-    protected string $method = 'POST';
+    protected $method = 'POST';
     /**
      * configurations
      *
-     * @var Configurationxed
+     * @var \Medboubazine\Chargily\Core\Configurations
      */
-    protected Configurations $configurations;
+    protected $configurations;
     /**
      * cachedResponse
      *
@@ -35,7 +35,7 @@ class RedirectUrl
     /**
      * __construct
      *
-     * @param  Configurations $configurations
+     * @param  Medboubazine\Chargily\Core\Configurations $configurations
      * @return void
      */
     public function __construct(Configurations $configurations)
