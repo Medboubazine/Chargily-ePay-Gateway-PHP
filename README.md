@@ -15,11 +15,10 @@ We do not recommend this option. But be careful to download the updated versions
 
 ```php
 use Medboubazine\Chargily\Chargily;
-use Medboubazine\Chargily\Core\Configurations;
 
 require './vendor/autoload.php';
 
-$chargily = new Chargily(new Configurations([
+$chargily = new Chargily([
     //crenditionals
     'api_key' => 'your-api-key', // you can you found it on your epay.chargily.com.dz Dashboard
     'api_secret' => 'your-api-secret', // you can you found it on your epay.chargily.com.dz Dashboard
@@ -45,7 +44,7 @@ $chargily = new Chargily(new Configurations([
         'headers' => [],
         'timeout' => 20,
     ],
-]));
+]);
 // get redirect url
 $redirectUrl = $chargily->getRedirectUrl();
 //like : https://epay.chargily.com.dz/checkout/random_token_here
@@ -62,15 +61,14 @@ if($redirectUrl){
 ```php
 
 use Medboubazine\Chargily\Chargily;
-use Medboubazine\Chargily\Core\Configurations;
 
 require './vendor/autoload.php';
 
-$chargily = new Chargily(new Configurations([
+$chargily = new Chargily([
                     //crenditionals
                     'api_key'=>'your-api-key',
                     'api_secret'=>'your-api-secret',
-                ]));
+                ]);
 
 if ($chargily->checkResponse()) {
     $response = $chargily->getResponseDetails();
